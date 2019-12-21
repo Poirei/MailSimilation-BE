@@ -1,11 +1,11 @@
-package com.ustglobal.mailsimulationapp.dao;
+package com.ustglobal.mailsimulationapp.service;
 
 import java.util.List;
 
 import com.ustglobal.mailsimulationapp.dto.MailBean;
 import com.ustglobal.mailsimulationapp.dto.UserBean;
 
-public interface IUserDAO {
+public interface IUserService {
 
 	public boolean register(UserBean userBean);
 	public boolean login(String email, String password);
