@@ -46,7 +46,7 @@ public class UserDAOImpl implements IUserDAO {
 	}
 	
 	public boolean login(String email, String password) {
-		String jpql = "from UserBean where email=:email&password=:password";
+		String jpql = "from UserBean where email=:email and password=:password";
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		TypedQuery<UserBean> query = entityManager.createQuery(jpql, UserBean.class);
 		query.setParameter("email", email);
