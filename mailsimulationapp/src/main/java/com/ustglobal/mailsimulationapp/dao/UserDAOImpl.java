@@ -23,9 +23,9 @@ public class UserDAOImpl implements IUserDAO {
 	public boolean register(UserBean userBean) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
-		String jpql = "from UserBean where id NOT IN :id";
+		String jpql = "from UserBean where user_name NOT IN :user_name";
 		TypedQuery<UserBean> typedQuery = entityManager.createQuery(jpql, UserBean.class);
-		typedQuery.setParameter("id", userBean.getId());
+		typedQuery.setParameter("user_name", userBean.getUser_name());
 		List<UserBean> beans = typedQuery.getResultList();
 		List<String> emails = new LinkedList<String>();
 		for (UserBean bean: beans) {
@@ -46,7 +46,7 @@ public class UserDAOImpl implements IUserDAO {
 	}
 	
 	public boolean login(String email, String password) {
-		String jpql =  "from UserBean where email=:email&password=:password";
+		String jpql = "from UserBean where email=:email&password=:password";
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		TypedQuery<UserBean> query = entityManager.createQuery(jpql, UserBean.class);
 		query.setParameter("email", email);
